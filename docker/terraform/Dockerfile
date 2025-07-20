@@ -8,7 +8,7 @@ ARG USERNAME=vscode
 USER ${USERNAME}
 
 # install and configure zsh
-RUN sudo apt-get install -y zsh
+RUN apt-get install -y zsh
 ENV SHELL /bin/zsh
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
