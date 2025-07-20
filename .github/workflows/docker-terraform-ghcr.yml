@@ -22,6 +22,7 @@ jobs:
       packages: write
     strategy:
       matrix:
+        architecture: [amd64, arm64]
         image:
           - name: terraform
             context: ./docker/terraform
@@ -59,5 +60,5 @@ jobs:
           context: ${{ matrix.image.context }}
           file: ${{ matrix.image.dockerfile }}
           push: true
-          tags: ghcr.io/${{ env.OWNER_LC }}/devcontainer-${{ matrix.image.tag }}:latest
-          platforms: linux/amd64,linux/arm64
+          tags: ghcr.io/${{ env.OWNER_LC }}/devcontainer-${{ matrix.image.tag }}-${{ matrix.architecture }}:latest
+          platforms: linux/${{ matrix.architecture }}
